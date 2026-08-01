@@ -433,3 +433,103 @@ if (reviewForm) {
   });
 }
 
+// ---- Real-World Projects Modal System ----
+const PROJECT_DATA = {
+  ecommerce: {
+    icon: '🛒', title: 'E-Commerce Application', category: 'Web Testing',
+    desc: 'Test a full-featured online shopping platform including product listings, cart management, checkout flows, payment gateway integration, order tracking, and user account management. Practice end-to-end test automation with Selenium and RestAssured.',
+    skills: ['Functional Testing', 'UI Automation', 'API Testing', 'Payment Flow', 'Database Validation']
+  },
+  banking: {
+    icon: '🏦', title: 'Banking Portal', category: 'Finance / FinTech',
+    desc: 'Test critical banking features including account login, fund transfers, transaction history, loan applications, and regulatory compliance validations. Focus on security testing, boundary values, and negative scenarios with high data sensitivity.',
+    skills: ['Security Testing', 'Boundary Testing', 'SQL Validation', 'Compliance Testing', 'API Automation']
+  },
+  healthcare: {
+    icon: '🏥', title: 'Healthcare Management System', category: 'MedTech / HealthIT',
+    desc: 'Test patient registration, appointment scheduling, electronic health records (EHR), lab report management, doctor-patient portal, and HIPAA compliance testing. Practice data validation and form testing on complex medical workflows.',
+    skills: ['EHR Testing', 'HIPAA Compliance', 'Form Validation', 'Role-based Access', 'Report Generation']
+  },
+  mobile: {
+    icon: '📱', title: 'Mobile Application Testing', category: 'Mobile / Android / iOS',
+    desc: 'Test native and hybrid mobile apps covering iOS and Android platforms. Practice gesture testing, push notifications, offline mode, device compatibility, battery performance, and app store submission readiness using tools like Appium.',
+    skills: ['Appium', 'Android Studio', 'iOS XCUITest', 'Device Compatibility', 'Performance Testing']
+  },
+  api: {
+    icon: '🌐', title: 'REST & GraphQL API Projects', category: 'Backend / API Testing',
+    desc: 'Perform comprehensive API testing including CRUD operations, authentication flows (OAuth, JWT, API Keys), response validation, rate limiting, error handling, and contract testing. Use Postman, RestAssured, and Newman for automation.',
+    skills: ['Postman', 'RestAssured (Java)', 'GraphQL Testing', 'JWT / OAuth', 'Contract Testing']
+  },
+  auth: {
+    icon: '🔐', title: 'Login & Authentication Flows', category: 'Security / Auth Testing',
+    desc: 'Test complete authentication and authorization modules: Single Sign-On (SSO), multi-factor authentication (MFA), role-based access control (RBAC), session management, password reset flows, and brute-force protection mechanisms.',
+    skills: ['SSO Testing', 'MFA Flows', 'RBAC Validation', 'Session Testing', 'Security Testing']
+  },
+  logistics: {
+    icon: '🚛', title: 'Logistics Management System', category: 'Supply Chain / ERP',
+    desc: 'Test end-to-end logistics workflows: shipment tracking, warehouse management, route optimization, delivery scheduling, invoicing, and third-party carrier integrations. Validate real-time data sync between warehouses, drivers, and customers.',
+    skills: ['Shipment Tracking', 'API Integration', 'Real-Time Data', 'DB Validation', 'Regression Testing']
+  },
+  fitness: {
+    icon: '🏋️', title: 'Fitness & Wellness Application', category: 'Health Tech / Consumer App',
+    desc: 'Test workout plan builders, calorie trackers, progress dashboards, wearable device sync (Fitbit, Apple Watch), subscription billing, live class streaming, push notification reminders, and social sharing features.',
+    skills: ['Wearable API Testing', 'Subscription Flows', 'Streaming QA', 'Push Notifications', 'Performance Testing']
+  },
+  messaging: {
+    icon: '💬', title: 'Real-Time Messaging Platform', category: 'Communication / Real-Time',
+    desc: 'Test one-to-one and group chat features, WebSocket real-time message delivery, media uploads (images/videos/files), message read receipts, typing indicators, notifications, end-to-end encryption, and user blocking / reporting.',
+    skills: ['WebSocket Testing', 'Real-Time Validation', 'File Upload QA', 'Encryption Testing', 'Load Testing']
+  },
+  game: {
+    icon: '🎮', title: 'Game Testing (Web & Mobile)', category: 'Gaming / QA',
+    desc: 'Test gameplay mechanics, level progression, in-app purchases (IAP), multiplayer synchronization, leaderboard accuracy, game physics boundary testing, performance under load, and cross-platform compatibility on PC, mobile, and console.',
+    skills: ['Gameplay Testing', 'IAP Testing', 'Multiplayer Sync', 'Load & Stress Testing', 'Cross-Platform QA']
+  },
+  n8n: {
+    icon: '⚡', title: 'n8n Workflow Automation Testing', category: 'No-Code / AI Automation',
+    desc: 'Test n8n automation workflows: validate trigger conditions, node execution order, data transformation accuracy, API integrations (Slack, Gmail, Webhook), error handling and retry logic, and end-to-end automated pipeline testing using API calls.',
+    skills: ['n8n Workflow QA', 'API Trigger Testing', 'Data Transformation', 'Error Handling', 'Integration Testing']
+  },
+  ehs: {
+    icon: '🏗️', title: 'Environment, Health & Safety (EHS)', category: 'EHS / Industrial Compliance',
+    desc: 'Test an EHS compliance management platform: incident reporting forms, risk assessment modules, regulatory compliance dashboards, audit trail logging, OSHA/ISO reporting exports, employee safety training tracking, and notification escalation flows.',
+    skills: ['Compliance Testing', 'Form Validation', 'Audit Trail QA', 'Report Generation', 'Regulatory Testing']
+  }
+};
+
+const projectModal = document.getElementById('project-modal');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+
+function openProjectModal(projectKey) {
+  const data = PROJECT_DATA[projectKey];
+  if (!data || !projectModal) return;
+  document.getElementById('modal-icon').textContent = data.icon;
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-category').textContent = data.category;
+  document.getElementById('modal-desc').textContent = data.desc;
+  const skillsEl = document.getElementById('modal-skills');
+  skillsEl.innerHTML = data.skills.map(s => `<span>${s}</span>`).join('');
+  projectModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (modalCloseBtn) modalCloseBtn.focus();
+}
+
+function closeProjectModal() {
+  if (!projectModal) return;
+  projectModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.project-card-btn').forEach(btn => {
+  btn.addEventListener('click', () => openProjectModal(btn.getAttribute('data-project')));
+});
+
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProjectModal);
+if (projectModal) {
+  projectModal.addEventListener('click', (e) => {
+    if (e.target === projectModal) closeProjectModal();
+  });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && projectModal && !projectModal.hidden) closeProjectModal();
+});
