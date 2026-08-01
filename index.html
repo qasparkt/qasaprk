@@ -222,19 +222,88 @@
     </div>
   </section>
 
-  <!-- PROJECTS STRIP -->
-  <section class="projects-strip" aria-label="Projects practiced">
+  <!-- PROJECT MODAL OVERLAY -->
+  <div id="project-modal" class="project-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="project-modal-box">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close project details">&times;</button>
+      <div class="modal-icon" id="modal-icon"></div>
+      <h3 id="modal-title"></h3>
+      <p class="modal-category" id="modal-category"></p>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-skills" id="modal-skills"></div>
+      <a href="contact.html" class="btn btn-orange" style="margin-top:20px;">Enroll &amp; Practice This Project &#8594;</a>
+    </div>
+  </div>
+
+  <!-- PROJECTS SECTION - EXPANDED CLICKABLE GRID -->
+  <section class="projects-section-full" id="projects" aria-labelledby="projects-heading">
     <div class="container">
-      <div class="strip-inner reveal">
-        <div class="strip-text"><h3>Practice on Real Projects</h3><p>Get hands-on experience that employers actually value</p></div>
-        <div class="projects-list">
-          <div class="project-pill">&#128722; E-Commerce App</div>
-          <div class="project-pill">&#127970; Banking Portal</div>
-          <div class="project-pill">&#127973; Healthcare System</div>
-          <div class="project-pill">&#128241; Mobile App Testing</div>
-          <div class="project-pill">&#127760; API Projects</div>
-          <div class="project-pill">&#128272; Login &amp; Auth Flows</div>
-        </div>
+      <div class="section-header reveal">
+        <span class="section-badge">&#128640; Hands-On Practice</span>
+        <h2 id="projects-heading">Practice on Real-World Projects</h2>
+        <p>Gain industry experience by testing real applications across 12+ domains. Click any project to learn more!</p>
+      </div>
+      <div class="projects-grid reveal">
+        <button class="project-card-btn" data-project="ecommerce" aria-label="E-Commerce App project details">
+          <div class="project-card-icon">&#128722;</div>
+          <div class="project-card-name">E-Commerce App</div>
+          <div class="project-card-tag">Web Testing</div>
+        </button>
+        <button class="project-card-btn" data-project="banking" aria-label="Banking Portal project details">
+          <div class="project-card-icon">&#127970;</div>
+          <div class="project-card-name">Banking Portal</div>
+          <div class="project-card-tag">Finance</div>
+        </button>
+        <button class="project-card-btn" data-project="healthcare" aria-label="Healthcare System project details">
+          <div class="project-card-icon">&#127973;</div>
+          <div class="project-card-name">Healthcare System</div>
+          <div class="project-card-tag">MedTech</div>
+        </button>
+        <button class="project-card-btn" data-project="mobile" aria-label="Mobile App Testing project details">
+          <div class="project-card-icon">&#128241;</div>
+          <div class="project-card-name">Mobile App Testing</div>
+          <div class="project-card-tag">Mobile</div>
+        </button>
+        <button class="project-card-btn" data-project="api" aria-label="API Projects project details">
+          <div class="project-card-icon">&#127760;</div>
+          <div class="project-card-name">API Projects</div>
+          <div class="project-card-tag">Backend</div>
+        </button>
+        <button class="project-card-btn" data-project="auth" aria-label="Login and Auth Flows project details">
+          <div class="project-card-icon">&#128272;</div>
+          <div class="project-card-name">Login &amp; Auth Flows</div>
+          <div class="project-card-tag">Security</div>
+        </button>
+        <button class="project-card-btn" data-project="logistics" aria-label="Logistics Management project details">
+          <div class="project-card-icon">&#128666;</div>
+          <div class="project-card-name">Logistics Management</div>
+          <div class="project-card-tag">Supply Chain</div>
+        </button>
+        <button class="project-card-btn" data-project="fitness" aria-label="Fitness App project details">
+          <div class="project-card-icon">&#127947;</div>
+          <div class="project-card-name">Fitness &amp; Wellness App</div>
+          <div class="project-card-tag">Health Tech</div>
+        </button>
+        <button class="project-card-btn" data-project="messaging" aria-label="Messaging Platform project details">
+          <div class="project-card-icon">&#128172;</div>
+          <div class="project-card-name">Messaging Platform</div>
+          <div class="project-card-tag">Real-Time</div>
+        </button>
+        <button class="project-card-btn" data-project="game" aria-label="Game Testing project details">
+          <div class="project-card-icon">&#127918;</div>
+          <div class="project-card-name">Game Testing</div>
+          <div class="project-card-tag">Gaming</div>
+        </button>
+        <button class="project-card-btn" data-project="n8n" aria-label="n8n Workflow Automation project details">
+          <div class="project-card-icon">&#9889;</div>
+          <div class="project-card-name">n8n Workflow Automation</div>
+          <div class="project-card-tag">No-Code / AI</div>
+        </button>
+        <button class="project-card-btn" data-project="ehs" aria-label="Environment Health and Safety project details">
+          <div class="project-card-icon">&#127961;&#65039;</div>
+          <div class="project-card-name">Environment Health &amp; Safety</div>
+          <div class="project-card-tag">EHS / Compliance</div>
+        </button>
       </div>
     </div>
   </section>
