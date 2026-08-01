@@ -1492,5 +1492,116 @@ a.contact-item:hover { border-color: rgba(245,130,31,0.4); background: rgba(245,
   font-weight: 600;
 }
 
+/* ============================
+   REVIEWS & RATINGS SYSTEM
+   ============================ */
+.rating-scorecard-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.score-number-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.score-big {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+}
+.score-stars {
+  color: #facc15;
+  font-size: 1.3rem;
+  margin: 6px 0;
+  letter-spacing: 2px;
+}
+.score-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.score-breakdown {
+  flex-grow: 1;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.score-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.bar-bg {
+  flex-grow: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange), #facc15);
+  border-radius: 99px;
+}
+
+/* Leave Review Box */
+.leave-review-box {
+  background: linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.98));
+  border: 1px solid rgba(245, 130, 31, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  margin-top: 50px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.leave-review-box h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.leave-review-box p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+.star-rating-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.star-rating-select .star-icon {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.star-rating-select .star-icon.active,
+.star-rating-select .star-icon:hover {
+  color: #facc15;
+  transform: scale(1.15);
+}
+.star-rating-label {
+  font-size: 0.9rem;
+  color: var(--orange-lt);
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+
 
 

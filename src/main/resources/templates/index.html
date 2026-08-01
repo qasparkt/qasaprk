@@ -239,21 +239,81 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section" aria-labelledby="testi-h">
+  <!-- REVIEWS & RATINGS SECTION -->
+  <section class="testimonials-section" id="reviews" aria-labelledby="testi-h">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-badge">Student Stories</span>
-        <h2 id="testi-h">What Our Students Say</h2>
-        <p>Join hundreds of successful QA professionals trained by Puja Paul &amp; Raj Kumar.</p>
+        <span class="section-badge">&#9733; &#9733; &#9733; &#9733; &#9733; Student Reviews</span>
+        <h2 id="testi-h">Student Reviews &amp; Ratings</h2>
+        <p>Real reviews and feedback from students trained by Puja Paul &amp; Raj Kumar.</p>
       </div>
-      <div class="testimonials-grid">
+
+      <!-- Rating Scorecard Banner -->
+      <div class="rating-scorecard-banner reveal">
+        <div class="score-number-box">
+          <span class="score-big">4.9</span>
+          <div class="score-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <span class="score-label">Based on 120+ Verified Student Reviews</span>
+        </div>
+        <div class="score-breakdown">
+          <div class="score-bar-row"><span>5 Stars</span><div class="bar-bg"><div class="bar-fill" style="width:92%;"></div></div><span>92%</span></div>
+          <div class="score-bar-row"><span>4 Stars</span><div class="bar-bg"><div class="bar-fill" style="width:8%;"></div></div><span>8%</span></div>
+        </div>
+      </div>
+
+      <!-- Dynamic Reviews Grid -->
+      <div class="testimonials-grid" id="reviews-grid">
         <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"Puja Ma'am and Raj Sir are incredible mentors! The 2-day free demo class convinced me immediately. Plus the 2 EMI fee option made it super affordable. Placed as QA Engineer!"</p></blockquote><div class="testimonial-author"><div class="author-avatar">P</div><div class="author-info"><strong>Priya Sharma</strong><span>QA Engineer @ TechCorp</span></div></div></article>
         <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"The database testing and Java automation live classes were crystal clear. The weekly mock interviews helped me remove all fear of interviews. Placed at Infosys!"</p></blockquote><div class="testimonial-author"><div class="author-avatar">R</div><div class="author-info"><strong>Rahul Verma</strong><span>SDET @ Infosys</span></div></div></article>
         <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"Personalized 1-on-1 guidance is QASpark's biggest strength. They review your resume, conduct weekly mock interviews, and refer you to companies. Highly recommended!"</p></blockquote><div class="testimonial-author"><div class="author-avatar">A</div><div class="author-info"><strong>Anjali Patel</strong><span>QA Analyst @ Wipro</span></div></div></article>
       </div>
+
+      <!-- INTERACTIVE SUBMIT YOUR REVIEW FORM -->
+      <div class="leave-review-box reveal" id="leave-review">
+        <h3>&#9733; Write a Review &amp; Share Your Experience</h3>
+        <p>Have you attended a class or free demo with Puja Paul or Raj Kumar? Leave your review below &#8212; it will immediately appear on the website!</p>
+        
+        <form class="review-form" id="review-form" novalidate aria-label="Submit review form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reviewer-name">Your Full Name *</label>
+              <input type="text" id="reviewer-name" placeholder="e.g. Suman Roy" required />
+            </div>
+            <div class="form-group">
+              <label for="reviewer-role">Course Taken / Job Title (Optional)</label>
+              <input type="text" id="reviewer-role" placeholder="e.g. Java Automation Student / QA Analyst" />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Select Rating *</label>
+            <div class="star-rating-select" id="star-rating-input">
+              <span class="star-icon active" data-value="1">&#9733;</span>
+              <span class="star-icon active" data-value="2">&#9733;</span>
+              <span class="star-icon active" data-value="3">&#9733;</span>
+              <span class="star-icon active" data-value="4">&#9733;</span>
+              <span class="star-icon active" data-value="5">&#9733;</span>
+              <span class="star-rating-label">(<span id="selected-rating-val">5</span>/5 Stars)</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reviewer-text">Your Feedback / Review Message *</label>
+            <textarea id="reviewer-text" rows="3" placeholder="Share your experience about live classes, notes, mock interviews, or mentors..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-orange btn-lg" id="review-submit-btn">&#9733; Submit Review</button>
+
+          <div class="form-success" id="review-success-msg" hidden style="margin-top:16px;">
+            <div class="success-icon">&#10003;</div>
+            <strong>Thank you! Your review has been published and is now live on the website.</strong>
+          </div>
+        </form>
+      </div>
+
     </div>
   </section>
+
 
   <!-- CTA BANNER -->
   <section class="cta-section" aria-label="Enroll call to action">

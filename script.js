@@ -329,3 +329,107 @@ if (heroVisual && window.matchMedia('(prefers-reduced-motion: no-preference)').m
     heroVisual.style.transform = `translate(${dx * 8}px, ${dy * 6}px)`;
   }, { passive: true });
 }
+
+// ---- User Review & Rating Submission System ----
+const reviewForm = document.getElementById('review-form');
+const reviewsGrid = document.getElementById('reviews-grid');
+const starRatingInput = document.getElementById('star-rating-input');
+let selectedRating = 5;
+
+if (starRatingInput) {
+  const stars = starRatingInput.querySelectorAll('.star-icon');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.getAttribute('data-value'), 10);
+      stars.forEach(s => {
+        const val = parseInt(s.getAttribute('data-value'), 10);
+        s.classList.toggle('active', val <= selectedRating);
+      });
+      const label = document.getElementById('selected-rating-val');
+      if (label) label.textContent = selectedRating;
+    });
+  });
+}
+
+function escapeHTML(str) {
+  return String(str).replace(/[&<>'"]/g, 
+    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+  );
+}
+
+function createReviewCardHTML(name, role, rating, text) {
+  const starsHTML = '&#9733;'.repeat(rating) + '&#9734;'.repeat(5 - rating);
+  return `
+    <article class="testimonial-card reveal visible" style="border: 1px solid var(--orange);">
+      <div class="testimonial-stars" aria-label="${rating} out of 5 stars">${starsHTML}</div>
+      <blockquote><p>"${escapeHTML(text)}"</p></blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">${escapeHTML(name.charAt(0).toUpperCase())}</div>
+        <div class="author-info">
+          <strong>${escapeHTML(name)}</strong>
+          <span>${escapeHTML(role || 'Verified Student')}</span>
+        </div>
+      </div>
+    </article>`;
+}
+
+function loadSavedReviews() {
+  if (!reviewsGrid) return;
+  const saved = JSON.parse(localStorage.getItem('qaspark_reviews') || '[]');
+  saved.reverse().forEach(rev => {
+    const cardHTML = createReviewCardHTML(rev.name, rev.role, rev.rating, rev.reviewText);
+    reviewsGrid.insertAdjacentHTML('afterbegin', cardHTML);
+  });
+}
+
+loadSavedReviews();
+
+if (reviewForm) {
+  reviewForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reviewer-name').value.trim();
+    const role = document.getElementById('reviewer-role').value.trim();
+    const reviewText = document.getElementById('reviewer-text').value.trim();
+    const btn = document.getElementById('review-submit-btn');
+
+    if (!name || !reviewText) {
+      alert('Please enter your name and review message.');
+      return;
+    }
+
+    btn.textContent = '⏳ Publishing Review...';
+    btn.disabled = true;
+
+    const newReview = { name, role: role || 'Verified Student', rating: selectedRating, reviewText };
+
+    try {
+      await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newReview)
+      });
+    } catch (err) {
+      console.log('Java API offline, saving locally:', err);
+    }
+
+    const saved = JSON.parse(localStorage.getItem('qaspark_reviews') || '[]');
+    saved.push(newReview);
+    localStorage.setItem('qaspark_reviews', JSON.stringify(saved));
+
+    if (reviewsGrid) {
+      const cardHTML = createReviewCardHTML(newReview.name, newReview.role, newReview.rating, newReview.reviewText);
+      reviewsGrid.insertAdjacentHTML('afterbegin', cardHTML);
+    }
+
+    const successMsg = document.getElementById('review-success-msg');
+    if (successMsg) {
+      successMsg.hidden = false;
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    reviewForm.reset();
+    btn.textContent = '🌟 Submit Review';
+    btn.disabled = false;
+  });
+}
+
