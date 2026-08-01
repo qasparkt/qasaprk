@@ -330,6 +330,35 @@ if (heroVisual && window.matchMedia('(prefers-reduced-motion: no-preference)').m
   }, { passive: true });
 }
 
+// ---- Review Modal Open / Close ----
+const reviewModal = document.getElementById('review-modal');
+const openReviewBtn = document.getElementById('open-review-modal-btn');
+const closeReviewBtn = document.getElementById('review-modal-close');
+
+function openReviewModal() {
+  if (!reviewModal) return;
+  reviewModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (closeReviewBtn) closeReviewBtn.focus();
+}
+
+function closeReviewModal() {
+  if (!reviewModal) return;
+  reviewModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+if (openReviewBtn) openReviewBtn.addEventListener('click', openReviewModal);
+if (closeReviewBtn) closeReviewBtn.addEventListener('click', closeReviewModal);
+if (reviewModal) {
+  reviewModal.addEventListener('click', (e) => {
+    if (e.target === reviewModal) closeReviewModal();
+  });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && reviewModal && !reviewModal.hidden) closeReviewModal();
+});
+
 // ---- User Review & Rating Submission System ----
 const reviewForm = document.getElementById('review-form');
 const reviewsGrid = document.getElementById('reviews-grid');
@@ -424,7 +453,11 @@ if (reviewForm) {
     const successMsg = document.getElementById('review-success-msg');
     if (successMsg) {
       successMsg.hidden = false;
-      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Auto-close modal after 2.5s on success
+      setTimeout(() => {
+        closeReviewModal();
+        successMsg.hidden = true;
+      }, 2500);
     }
 
     reviewForm.reset();
