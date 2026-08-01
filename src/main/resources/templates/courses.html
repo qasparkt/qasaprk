@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses & Curriculum | QASpark</title>
+  <meta name="description" content="Explore all QASpark courses: Manual Testing, Database Testing, Automation Testing with Java, and AI Testing. Full curriculum included." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="courses">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="QASpark Home">
+        <div class="logo-icon">
+          <span class="logo-q">Q</span><span class="logo-a">A</span><span class="logo-spark">&#9889;</span>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name"><span class="qa">QA</span><span class="spark">Spark</span></span>
+          <span class="logo-subtitle">Learn Quality. Assure Excellence.</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list" id="nav-links">
+        <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="courses.html" class="nav-link active" id="nav-courses">Courses</a></li>
+        <li><a href="courses.html#curriculum" class="nav-link" id="nav-curriculum">Curriculum</a></li>
+        <li><a href="pricing.html" class="nav-link" id="nav-pricing">Pricing</a></li>
+        <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta" id="nav-enroll-btn">Enroll Now</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <section class="page-hero" aria-label="Page header">
+    <div class="page-hero-shapes" aria-hidden="true">
+      <div class="ph-shape ph-shape-1"></div>
+      <div class="ph-shape ph-shape-2"></div>
+    </div>
+    <div class="container">
+      <div class="breadcrumbs" aria-label="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><span>Courses</span></div>
+      <span class="section-badge">Our Programs</span>
+      <h1>All Courses</h1>
+      <p>Explore our comprehensive QA testing courses — from manual testing basics to AI-powered automation.</p>
+    </div>
+  </section>
+
+  <!-- COURSE CARDS -->
+  <section class="courses-section" id="courses-list" aria-labelledby="courses-h" style="padding-top:60px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Choose Your Path</span>
+        <h2 id="courses-h">Our Training Programs</h2>
+        <p>All courses include live projects, certificate of completion, and placement assistance.</p>
+      </div>
+
+      <!-- User Friendly Course Filter Bar -->
+      <div class="course-filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All Courses</button>
+        <button class="filter-btn" data-filter="manual">📋 Manual Testing</button>
+        <button class="filter-btn" data-filter="database">🗄️ Database Testing</button>
+        <button class="filter-btn" data-filter="automation">🤖 Automation (Java)</button>
+        <button class="filter-btn" data-filter="ai">✨ AI Testing</button>
+      </div>
+
+      <div class="courses-grid">
+
+        <article class="course-card reveal" id="course-manual" data-category="manual">
+          <div class="course-card-top" style="--card-color:#f5821f;"><div class="course-icon-wrap"><img src="images/icon_manual_3d.png" alt="Manual Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">Most Popular</div></div>
+          <div class="course-card-body">
+            <h3>QA Manual Testing</h3>
+            <p>Complete manual testing from absolute basics to advanced level. Learn to write test cases, bug reports, and testing strategies used in real projects.</p>
+            <ul class="course-topics">
+              <li>SDLC &amp; STLC Fundamentals</li><li>Test Case Design Techniques</li>
+              <li>Bug Lifecycle &amp; Reporting</li><li>Agile &amp; Scrum Testing</li>
+              <li>API Testing with Postman</li><li>Real Project Practice</li>
+            </ul>
+            <div class="course-footer"><span class="course-price">&#8377;8,000</span><a href="contact.html?course=manual" class="btn btn-primary">Enroll Now</a></div>
+          </div>
+        </article>
+
+        <article class="course-card reveal" id="course-database" data-category="database">
+          <div class="course-card-top" style="--card-color:#3b82f6;"><div class="course-icon-wrap"><img src="images/icon_database_3d.png" alt="Database Testing" class="course-3d-icon-img" /></div></div>
+          <div class="course-card-body">
+            <h3>Database Testing</h3>
+            <p>Master SQL queries, database validation, and database testing strategies. Understand data integrity and write complex queries with confidence.</p>
+            <ul class="course-topics">
+              <li>SQL Basics &amp; Advanced Queries</li><li>Joins, Indexing, Normalization</li>
+              <li>Stored Procedures &amp; Functions</li><li>Data Validation Techniques</li>
+              <li>DB Testing in Real Projects</li><li>Performance Tuning Basics</li>
+            </ul>
+            <div class="course-footer"><span class="course-price">&#8377;5,000</span><a href="contact.html?course=database" class="btn btn-primary">Enroll Now</a></div>
+          </div>
+        </article>
+
+        <article class="course-card reveal" id="course-automation" data-category="automation">
+          <div class="course-card-top" style="--card-color:#10b981;"><div class="course-icon-wrap"><img src="images/icon_automation_3d.png" alt="Automation Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">In Demand</div></div>
+          <div class="course-card-body">
+            <h3>Automation Testing (Java)</h3>
+            <p>Learn test automation with Java from scratch. Hands-on training with Selenium WebDriver, TestNG, Cucumber BDD &amp; RestAssured API automation.</p>
+            <ul class="course-topics">
+              <li>Core Java Programming</li><li>Selenium WebDriver (Java)</li>
+              <li>Page Object Model (POM)</li><li>TestNG &amp; JUnit Frameworks</li>
+              <li>Cucumber BDD Framework</li><li>RestAssured API Automation</li>
+            </ul>
+            <div class="course-footer"><span class="course-price">&#8377;17,500</span><a href="contact.html?course=automation" class="btn btn-primary">Enroll Now</a></div>
+          </div>
+        </article>
+
+        <article class="course-card reveal" id="course-ai" data-category="ai">
+          <div class="course-card-top" style="--card-color:#8b5cf6;"><div class="course-icon-wrap"><img src="images/icon_ai_3d.png" alt="AI Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">Trending</div></div>
+          <div class="course-card-body">
+            <h3>AI-Powered Testing</h3>
+            <p>Stay ahead with AI testing tools. Leverage artificial intelligence for smarter, faster, and more efficient software testing.</p>
+            <ul class="course-topics">
+              <li>AI Testing Fundamentals</li><li>ChatGPT for Test Case Writing</li>
+              <li>AI-driven Test Automation</li><li>Self-healing Test Scripts</li>
+              <li>Visual Testing with AI</li><li>Applitools, Testim &amp; More</li>
+            </ul>
+            <div class="course-footer"><span class="course-price">&#8377;5,000</span><a href="contact.html?course=ai" class="btn btn-primary">Enroll Now</a></div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- COMBO OFFER -->
+      <div class="combo-card reveal" id="combo-offer">
+        <div class="combo-left">
+          <span class="combo-tag">&#128293; Ultimate All-Courses Bundle</span>
+          <h3>All Courses Combined</h3>
+          <p>Get all 4 courses &#8212; Manual Testing, Database Testing, Automation (Java) &amp; AI Testing &#8212; in one unbeatable package.</p>
+          <ul class="combo-features">
+            <li>&#10003; QA Manual Testing (&#8377;8,000)</li>
+            <li>&#10003; Database Testing (&#8377;5,000)</li>
+            <li>&#10003; Automation Testing with Java (&#8377;17,500)</li>
+            <li>&#10003; AI-Powered Testing (&#8377;5,000)</li>
+            <li>&#10003; Certificate + Placement Support</li>
+          </ul>
+        </div>
+        <div class="combo-right">
+          <div class="combo-price-block">
+            <span class="combo-original">&#8377;35,500</span>
+            <span class="combo-price">&#8377;20,000</span>
+            <span class="combo-save">Save &#8377;15,500</span>
+          </div>
+          <a href="contact.html?course=combo" class="btn btn-orange btn-lg">Get This Deal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum-section" id="curriculum" aria-labelledby="curriculum-h">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Deep Dive</span>
+        <h2 id="curriculum-h">What You Will Learn</h2>
+        <p>A structured, industry-aligned curriculum that takes you from zero to job-ready.</p>
+      </div>
+      <div class="curriculum-tabs" role="tablist" aria-label="Course curriculum">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-panel-manual" id="tab-manual">&#128203; Manual Testing</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-db" id="tab-db">&#128452;&#65039; Database Testing</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-auto" id="tab-auto">&#129302; Automation (Java)</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-ai" id="tab-ai">&#10024; AI Testing</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel active" role="tabpanel" id="tab-panel-manual" aria-labelledby="tab-manual">
+          <div class="curriculum-grid">
+            <div class="curriculum-module"><div class="module-num">01</div><div class="module-content"><h4>Testing Fundamentals</h4><p>SDLC, STLC, types of testing, testing principles, and QA basics.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">02</div><div class="module-content"><h4>Test Case Design</h4><p>Equivalence partitioning, boundary value analysis, decision tables.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">03</div><div class="module-content"><h4>Bug Tracking</h4><p>Bug lifecycle, severity vs priority, Jira, Bugzilla, effective bug reports.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">04</div><div class="module-content"><h4>Test Management</h4><p>Test plans, strategies, estimation, metrics, and reporting.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">05</div><div class="module-content"><h4>Agile Testing</h4><p>Scrum ceremonies, sprint testing, user story validation.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">06</div><div class="module-content"><h4>API Testing</h4><p>REST API concepts, Postman, API validation, status codes.</p></div></div>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="tab-panel-db" aria-labelledby="tab-db" hidden>
+          <div class="curriculum-grid">
+            <div class="curriculum-module"><div class="module-num">01</div><div class="module-content"><h4>SQL Basics</h4><p>DDL, DML, DCL commands, SELECT statements, filtering data.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">02</div><div class="module-content"><h4>Advanced Queries</h4><p>JOINs (INNER, OUTER, CROSS), subqueries, CTEs, window functions.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">03</div><div class="module-content"><h4>Indexing &amp; Performance</h4><p>Indexes, query optimization, EXPLAIN plans, normalization.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">04</div><div class="module-content"><h4>Stored Procedures</h4><p>Writing procedures, functions, triggers, and views.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">05</div><div class="module-content"><h4>Data Validation</h4><p>Data integrity, referential integrity, constraints, quality checks.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">06</div><div class="module-content"><h4>DB Testing Projects</h4><p>Real-world DB testing scenarios, ETL testing, data verification.</p></div></div>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="tab-panel-auto" aria-labelledby="tab-auto" hidden>
+          <div class="curriculum-grid">
+            <div class="curriculum-module"><div class="module-num">01</div><div class="module-content"><h4>Core Java Fundamentals</h4><p>Java syntax, OOPs concepts, Collections framework, Exception handling &amp; File I/O.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">02</div><div class="module-content"><h4>Selenium WebDriver with Java</h4><p>Browser automation, web element locators, synchronization waits, frames &amp; alerts.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">03</div><div class="module-content"><h4>Framework Design (POM)</h4><p>Page Object Model, Data-Driven (Apache POI), Keyword &amp; Hybrid automation frameworks.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">04</div><div class="module-content"><h4>TestNG &amp; JUnit</h4><p>Test annotations, assertions, test suites, parallel execution &amp; Extent HTML reporting.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">05</div><div class="module-content"><h4>Cucumber BDD Framework</h4><p>BDD feature files with Gherkin syntax, Step definitions, Scenario Outlines &amp; Runners.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">06</div><div class="module-content"><h4>RestAssured API Automation</h4><p>REST API automation with Java, GET/POST/PUT/DELETE requests, JSON parsing &amp; Assertion.</p></div></div>
+          </div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="tab-panel-ai" aria-labelledby="tab-ai" hidden>
+          <div class="curriculum-grid">
+            <div class="curriculum-module"><div class="module-num">01</div><div class="module-content"><h4>AI in Testing Intro</h4><p>Understanding AI, ML basics, and how AI transforms QA.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">02</div><div class="module-content"><h4>ChatGPT for QA</h4><p>Using LLMs to generate test cases, bug reports, documentation.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">03</div><div class="module-content"><h4>Visual AI Testing</h4><p>Applitools Eyes, visual regression, AI screenshot comparison.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">04</div><div class="module-content"><h4>Self-Healing Scripts</h4><p>Testim.io, Functionize &#8212; AI tools that auto-fix broken scripts.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">05</div><div class="module-content"><h4>AI Test Generation</h4><p>Automated test case generation from requirements using AI.</p></div></div>
+            <div class="curriculum-module"><div class="module-num">06</div><div class="module-content"><h4>Future of QA with AI</h4><p>Autonomous testing, AIOps, intelligent defect prediction.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Enroll CTA">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-text"><h2>Start Learning Today</h2><p>Pick a course and join our next batch. Small batches, flexible timings.</p></div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-orange btn-lg">Enroll Now &#8594;</a>
+          <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon small"><span class="logo-q">Q</span><span class="logo-a">A</span><span class="logo-spark">&#9889;</span></div>
+            <div class="logo-text"><span class="logo-name"><span class="qa">QA</span><span class="spark">Spark</span></span><span class="logo-subtitle">Learn Quality. Assure Excellence.</span></div>
+          </div>
+          <p class="footer-desc">Empowering the next generation of QA professionals with practical, industry-ready skills in software testing.</p>
+          <div class="footer-contact-quick">
+            <a href="tel:8910438179">&#128222; 8910438179</a>
+            <a href="mailto:qasparktesting@gmail.com">&#9993;&#65039; qasparktesting@gmail.com</a>
+          </div>
+        </div>
+        <div class="footer-links-group">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="courses.html#course-manual">QA Manual Testing</a></li>
+            <li><a href="courses.html#course-database">Database Testing</a></li>
+            <li><a href="courses.html#course-automation">Automation Testing (Java)</a></li>
+            <li><a href="courses.html#course-ai">AI Testing Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html#curriculum">Curriculum</a></li>
+            <li><a href="index.html#why-us">Why QASpark</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>What We Offer</h4>
+          <ul>
+            <li>&#127891; Expert-Led Training</li>
+            <li>&#128640; Live Projects</li>
+            <li>&#128220; Certification</li>
+            <li>&#128188; Placement Support</li>
+            <li>&#128101; Small Batches</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 QASpark. All rights reserved. | <em>Quality Learning, Brighter Future!</em></p>
+        <p class="footer-tagline">Learn Today. Test Tomorrow. Lead the Future! &#9889;</p>
+      </div>
+    </div>
+  </footer>
+  <!-- FLOATING QUICK CONNECT WIDGET (USER FRIENDLY) -->
+  <div class="floating-widget-group">
+    <a href="https://wa.me/918910438179?text=Hi%20QASpark!%20I%20want%20to%20know%20more%20about%20your%20QA%20courses." target="_blank" rel="noopener" class="widget-btn widget-btn-whatsapp" title="Chat on WhatsApp">
+      <span class="widget-icon">&#128172;</span>
+      <span class="widget-label">WhatsApp Us</span>
+    </a>
+    <a href="tel:8910438179" class="widget-btn widget-btn-call" title="Call Us Directly">
+      <span class="widget-icon">&#128222;</span>
+      <span class="widget-label">Call 8910438179</span>
+    </a>
+  </div>
+  <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top" title="Back to top">&#8593;</button>
+  <script src="script.js"></script>
+</body>
+</html>

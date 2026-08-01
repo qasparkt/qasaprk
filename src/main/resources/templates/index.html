@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | QASpark</title>
+  <meta name="description" content="QASpark is India's premier QA testing academy offering Manual Testing, Database Testing, Java Automation, and AI Testing courses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="QASpark Home">
+        <div class="logo-icon">
+          <span class="logo-q">Q</span><span class="logo-a">A</span><span class="logo-spark">&#9889;</span>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name"><span class="qa">QA</span><span class="spark">Spark</span></span>
+          <span class="logo-subtitle">Learn Quality. Assure Excellence.</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list" id="nav-links">
+        <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="courses.html" class="nav-link" id="nav-courses">Courses</a></li>
+        <li><a href="courses.html#curriculum" class="nav-link" id="nav-curriculum">Curriculum</a></li>
+        <li><a href="pricing.html" class="nav-link" id="nav-pricing">Pricing</a></li>
+        <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta" id="nav-enroll-btn">Enroll Now</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="badge-dot"></span>India&#39;s Premier QA Testing Academy</div>
+        <h1 class="hero-title">Learn Quality.<br /><span class="highlight-text">Assure Excellence.</span></h1>
+        <p class="hero-subtitle">Master <strong>Manual Testing</strong>, <strong>Java Automation Testing</strong>, <strong>Database Testing</strong> &amp; <strong>AI-Powered Testing</strong> &#8212; from basics to advanced, with real live projects.</p>
+        <div class="hero-tags">
+          <span class="tag">&#10003; Basics to Advanced</span>
+          <span class="tag">&#10003; Live Projects</span>
+          <span class="tag">&#10003; Java &amp; Selenium</span>
+          <span class="tag">&#10003; Placement Support</span>
+        </div>
+        <div class="hero-actions">
+          <a href="courses.html" class="btn btn-primary btn-lg" id="hero-explore-btn">Explore Courses</a>
+          <a href="tel:8910438179" class="btn btn-outline btn-lg" id="hero-call-btn">&#128222; Call Us Now</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-num" data-target="500">0</span><span class="stat-plus">+</span><span class="stat-label">Students Trained</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item"><span class="stat-num" data-target="4">0</span><span class="stat-plus">+</span><span class="stat-label">Courses Offered</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item"><span class="stat-num" data-target="95">0</span><span class="stat-plus">%</span><span class="stat-label">Placement Rate</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card-stack">
+          <div class="floating-card card-manual"><div class="card-icon"><img src="images/icon_manual_3d.png" alt="Manual 3D" class="course-3d-icon-img" /></div><div class="card-info"><strong>Manual Testing</strong><span>Basics to Advanced</span></div></div>
+          <div class="floating-card card-automation"><div class="card-icon"><img src="images/icon_automation_3d.png" alt="Automation 3D" class="course-3d-icon-img" /></div><div class="card-info"><strong>Automation Testing</strong><span>Java &amp; Selenium</span></div></div>
+          <div class="floating-card card-db"><div class="card-icon"><img src="images/icon_database_3d.png" alt="Database 3D" class="course-3d-icon-img" /></div><div class="card-info"><strong>Database Testing</strong><span>SQL &amp; Queries</span></div></div>
+          <div class="floating-card card-ai"><div class="card-icon"><img src="images/icon_ai_3d.png" alt="AI 3D" class="course-3d-icon-img" /></div><div class="card-info"><strong>AI Testing Tools</strong><span>Smart Testing</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0f172a"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- COURSES OVERVIEW -->
+  <section class="courses-section" id="courses-overview" aria-labelledby="home-courses-h">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Our Programs</span>
+        <h2 id="home-courses-h">What We Teach</h2>
+        <p>Practical, industry-aligned courses designed for beginners and working professionals.</p>
+      </div>
+      <div class="courses-grid">
+        <article class="course-card reveal" id="hc-manual">
+          <div class="course-card-top" style="--card-color:#f5821f;"><div class="course-icon-wrap"><img src="images/icon_manual_3d.png" alt="Manual Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">Most Popular</div></div>
+          <div class="course-card-body">
+            <h3>QA Manual Testing</h3>
+            <p>Complete manual testing from absolute basics to advanced level. SDLC, test case design, bug tracking, Agile &amp; API testing with Postman.</p>
+            <div class="course-footer"><span class="course-price">&#8377;8,000</span><a href="courses.html#course-manual" class="btn btn-primary">View Course</a></div>
+          </div>
+        </article>
+        <article class="course-card reveal" id="hc-db">
+          <div class="course-card-top" style="--card-color:#3b82f6;"><div class="course-icon-wrap"><img src="images/icon_database_3d.png" alt="Database Testing" class="course-3d-icon-img" /></div></div>
+          <div class="course-card-body">
+            <h3>Database Testing</h3>
+            <p>SQL from basics to advanced, JOINs, stored procedures, normalization, and real-world database validation techniques.</p>
+            <div class="course-footer"><span class="course-price">&#8377;5,000</span><a href="courses.html#course-database" class="btn btn-primary">View Course</a></div>
+          </div>
+        </article>
+        <article class="course-card reveal" id="hc-auto">
+          <div class="course-card-top" style="--card-color:#10b981;"><div class="course-icon-wrap"><img src="images/icon_automation_3d.png" alt="Automation Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">In Demand</div></div>
+          <div class="course-card-body">
+            <h3>Automation Testing (Java)</h3>
+            <p>Core Java, Selenium WebDriver, TestNG, Cucumber BDD, and RestAssured API Automation framework development.</p>
+            <div class="course-footer"><span class="course-price">&#8377;17,500</span><a href="courses.html#course-automation" class="btn btn-primary">View Course</a></div>
+          </div>
+        </article>
+        <article class="course-card reveal" id="hc-ai">
+          <div class="course-card-top" style="--card-color:#8b5cf6;"><div class="course-icon-wrap"><img src="images/icon_ai_3d.png" alt="AI Testing" class="course-3d-icon-img" /></div><div class="course-badge-pill">Trending</div></div>
+          <div class="course-card-body">
+            <h3>AI-Powered Testing</h3>
+            <p>ChatGPT for QA, visual AI testing with Applitools, self-healing test scripts, and the future of AI-driven quality assurance.</p>
+            <div class="course-footer"><span class="course-price">&#8377;5,000</span><a href="courses.html#course-ai" class="btn btn-primary">View Course</a></div>
+          </div>
+        </article>
+      </div>
+      <div class="text-center reveal" style="margin-top:36px;">
+        <a href="courses.html" class="btn btn-primary btn-lg">View All Courses &amp; Curriculum &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us-section" id="why-us" aria-labelledby="why-us-h">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Why QASpark</span>
+        <h2 id="why-us-h">Why Choose Us?</h2>
+        <p>We don&#39;t just teach &#8212; we transform learners into industry-ready QA professionals.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><div class="feature-icon">&#127942;</div><h3>Expert Trainers</h3><p>Learn from industry professionals with years of real-world QA experience at top tech companies.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#128302;</div><h3>Practical Learning</h3><p>80% hands-on practice. Every concept is reinforced with live exercises and real-world scenarios.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#128640;</div><h3>Live &amp; Demo Projects</h3><p>Work on real live projects and demo applications to build a portfolio that impresses employers.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#128101;</div><h3>Small Batch Size</h3><p>Limited students per batch ensures personalized attention and better learning outcomes for everyone.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#8987;&#65039;</div><h3>Flexible Timings</h3><p>Morning, evening, and weekend batches. Learn at a time that suits your busy schedule.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#127891;</div><h3>Certificate</h3><p>Receive a verified certificate upon completion to showcase your skills to employers and recruiters.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#128188;</div><h3>Placement Assistance</h3><p>Resume building, mock interviews, LinkedIn optimization, and direct referrals to hiring companies.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">&#127919;</div><h3>Real-Time Scenarios</h3><p>Practice with real-world testing scenarios and bug-fixing challenges from actual job tasks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS STRIP -->
+  <section class="projects-strip" aria-label="Projects practiced">
+    <div class="container">
+      <div class="strip-inner reveal">
+        <div class="strip-text"><h3>Practice on Real Projects</h3><p>Get hands-on experience that employers actually value</p></div>
+        <div class="projects-list">
+          <div class="project-pill">&#128722; E-Commerce App</div>
+          <div class="project-pill">&#127970; Banking Portal</div>
+          <div class="project-pill">&#127973; Healthcare System</div>
+          <div class="project-pill">&#128241; Mobile App Testing</div>
+          <div class="project-pill">&#127760; API Projects</div>
+          <div class="project-pill">&#128272; Login &amp; Auth Flows</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" aria-labelledby="testi-h">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Student Stories</span>
+        <h2 id="testi-h">What Our Students Say</h2>
+        <p>Join hundreds of successful QA professionals who started at QASpark.</p>
+      </div>
+      <div class="testimonials-grid">
+        <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"QASpark transformed my career. I went from knowing nothing about testing to landing a job as a QA Engineer in just 3 months. The practical approach is unbeatable!"</p></blockquote><div class="testimonial-author"><div class="author-avatar">P</div><div class="author-info"><strong>Priya Sharma</strong><span>QA Engineer @ TechCorp</span></div></div></article>
+        <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"The database testing course was exactly what I needed. The SQL content is so thorough and the live project experience gave me real confidence in interviews."</p></blockquote><div class="testimonial-author"><div class="author-avatar">R</div><div class="author-info"><strong>Rahul Verma</strong><span>SDET @ Infosys</span></div></div></article>
+        <article class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>"Best institute for QA! Small batch sizes mean the trainer actually knows your progress. Got placed within 2 weeks of completing the course. Highly recommend!"</p></blockquote><div class="testimonial-author"><div class="author-avatar">A</div><div class="author-info"><strong>Anjali Patel</strong><span>QA Analyst @ Wipro</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section" aria-label="Enroll call to action">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-text">
+          <h2>Ready to Launch Your QA Career?</h2>
+          <p>Join our next batch and get certified. Small batches, flexible timings, guaranteed learning.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-orange btn-lg">Enroll Today &#8594;</a>
+          <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon small"><span class="logo-q">Q</span><span class="logo-a">A</span><span class="logo-spark">&#9889;</span></div>
+            <div class="logo-text"><span class="logo-name"><span class="qa">QA</span><span class="spark">Spark</span></span><span class="logo-subtitle">Learn Quality. Assure Excellence.</span></div>
+          </div>
+          <p class="footer-desc">Empowering the next generation of QA professionals with practical, industry-ready skills in software testing.</p>
+          <div class="footer-contact-quick">
+            <a href="tel:8910438179">&#128222; 8910438179</a>
+            <a href="mailto:qasparktesting@gmail.com">&#9993;&#65039; qasparktesting@gmail.com</a>
+          </div>
+        </div>
+        <div class="footer-links-group">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="courses.html#course-manual">QA Manual Testing</a></li>
+            <li><a href="courses.html#course-database">Database Testing</a></li>
+            <li><a href="courses.html#course-automation">Automation Testing (Java)</a></li>
+            <li><a href="courses.html#course-ai">AI Testing Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html#curriculum">Curriculum</a></li>
+            <li><a href="index.html#why-us">Why QASpark</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>What We Offer</h4>
+          <ul>
+            <li>&#127891; Expert-Led Training</li>
+            <li>&#128640; Live Projects</li>
+            <li>&#128220; Certification</li>
+            <li>&#128188; Placement Support</li>
+            <li>&#128101; Small Batches</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 QASpark. All rights reserved. | <em>Quality Learning, Brighter Future!</em></p>
+        <p class="footer-tagline">Learn Today. Test Tomorrow. Lead the Future! &#9889;</p>
+      </div>
+    </div>
+  </footer>
+  <!-- FLOATING QUICK CONNECT WIDGET (USER FRIENDLY) -->
+  <div class="floating-widget-group">
+    <a href="https://wa.me/918910438179?text=Hi%20QASpark!%20I%20want%20to%20know%20more%20about%20your%20QA%20courses." target="_blank" rel="noopener" class="widget-btn widget-btn-whatsapp" title="Chat on WhatsApp">
+      <span class="widget-icon">&#128172;</span>
+      <span class="widget-label">WhatsApp Us</span>
+    </a>
+    <a href="tel:8910438179" class="widget-btn widget-btn-call" title="Call Us Directly">
+      <span class="widget-icon">&#128222;</span>
+      <span class="widget-label">Call 8910438179</span>
+    </a>
+  </div>
+  <button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top" title="Back to top">&#8593;</button>
+  <script src="script.js"></script>
+</body>
+</html>
