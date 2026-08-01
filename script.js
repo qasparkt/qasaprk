@@ -437,63 +437,75 @@ if (reviewForm) {
 const PROJECT_DATA = {
   ecommerce: {
     icon: '🛒', title: 'E-Commerce Application', category: 'Web Testing',
-    desc: 'Test a full-featured online shopping platform including product listings, cart management, checkout flows, payment gateway integration, order tracking, and user account management. Practice end-to-end test automation with Selenium and RestAssured.',
-    skills: ['Functional Testing', 'UI Automation', 'API Testing', 'Payment Flow', 'Database Validation']
+    desc: 'Test a full-featured online shopping platform covering product listings, cart management, checkout flows, payment gateways, order tracking, coupon logic, and user account management. This project gives real-world exposure to complex UI flows and database-driven validations.',
+    learn: ['Write end-to-end test cases for cart & checkout', 'Test payment gateway integrations (UPI, cards)', 'Validate product search, filters & sorting', 'Test coupon/discount boundary values', 'Perform regression testing post-release', 'API testing for order management endpoints'],
+    skills: ['Selenium (Java)', 'Playwright', 'Postman', 'MySQL', 'TestNG', 'Cucumber BDD']
   },
   banking: {
     icon: '🏦', title: 'Banking Portal', category: 'Finance / FinTech',
-    desc: 'Test critical banking features including account login, fund transfers, transaction history, loan applications, and regulatory compliance validations. Focus on security testing, boundary values, and negative scenarios with high data sensitivity.',
-    skills: ['Security Testing', 'Boundary Testing', 'SQL Validation', 'Compliance Testing', 'API Automation']
+    desc: 'Test critical banking features including account login, fund transfers (NEFT/IMPS/RTGS), transaction history, loan application workflows, statement generation, and regulatory compliance. Focus on security, boundary values, and negative scenarios with high data sensitivity.',
+    learn: ['Test fund transfer flows end-to-end', 'Validate transaction history & statements', 'Security testing for login & sessions', 'Boundary value analysis on amounts/limits', 'Database validation for transaction records', 'Compliance and regulatory field validations'],
+    skills: ['Selenium WebDriver', 'SQL Testing', 'Postman', 'Security Testing', 'RestAssured', 'TestNG']
   },
   healthcare: {
     icon: '🏥', title: 'Healthcare Management System', category: 'MedTech / HealthIT',
-    desc: 'Test patient registration, appointment scheduling, electronic health records (EHR), lab report management, doctor-patient portal, and HIPAA compliance testing. Practice data validation and form testing on complex medical workflows.',
-    skills: ['EHR Testing', 'HIPAA Compliance', 'Form Validation', 'Role-based Access', 'Report Generation']
+    desc: 'Test a patient management platform covering patient registration, appointment scheduling, electronic health records (EHR), lab reports, doctor-patient portal, prescriptions, and HIPAA compliance. Practice complex data validation on medical workflows.',
+    learn: ['Test patient registration & profile management', 'Validate appointment scheduling & slots', 'Test EHR data entry and retrieval flows', 'Lab report upload and viewing validation', 'Role-based access: Doctor vs Patient vs Admin', 'HIPAA compliance and data privacy testing'],
+    skills: ['Selenium (Java)', 'Postman', 'MySQL', 'HIPAA Compliance', 'TestNG', 'Jira']
   },
   mobile: {
     icon: '📱', title: 'Mobile Application Testing', category: 'Mobile / Android / iOS',
-    desc: 'Test native and hybrid mobile apps covering iOS and Android platforms. Practice gesture testing, push notifications, offline mode, device compatibility, battery performance, and app store submission readiness using tools like Appium.',
-    skills: ['Appium', 'Android Studio', 'iOS XCUITest', 'Device Compatibility', 'Performance Testing']
+    desc: 'Test native and hybrid mobile apps on Android and iOS. Practice gesture testing, push notifications, offline mode, deep linking, device compatibility, battery performance, and app store readiness using Appium automation.',
+    learn: ['Setup Appium & Android Studio environment', 'Write Appium + Java mobile test scripts', 'Test gestures: swipe, pinch, scroll, tap', 'Validate push notifications and deep links', 'Device compatibility & screen size testing', 'Test offline mode and network interruptions'],
+    skills: ['Appium', 'Android Studio', 'Java', 'iOS XCUITest', 'Device Farm', 'TestNG']
   },
   api: {
     icon: '🌐', title: 'REST & GraphQL API Projects', category: 'Backend / API Testing',
-    desc: 'Perform comprehensive API testing including CRUD operations, authentication flows (OAuth, JWT, API Keys), response validation, rate limiting, error handling, and contract testing. Use Postman, RestAssured, and Newman for automation.',
-    skills: ['Postman', 'RestAssured (Java)', 'GraphQL Testing', 'JWT / OAuth', 'Contract Testing']
+    desc: 'Perform comprehensive API testing including CRUD operations, OAuth 2.0, JWT, response schema validation, rate limiting, error handling, and contract testing. Automate complete API suites using Postman collections and RestAssured with Java.',
+    learn: ['Test CRUD REST APIs (GET, POST, PUT, DELETE)', 'Validate response body, headers & status codes', 'Automate tests using RestAssured + Java', 'OAuth 2.0 and JWT token-based auth testing', 'GraphQL query and mutation testing', 'API performance and rate limit testing'],
+    skills: ['Postman', 'RestAssured (Java)', 'Newman', 'GraphQL', 'JWT / OAuth 2.0', 'Swagger/OpenAPI']
   },
   auth: {
     icon: '🔐', title: 'Login & Authentication Flows', category: 'Security / Auth Testing',
-    desc: 'Test complete authentication and authorization modules: Single Sign-On (SSO), multi-factor authentication (MFA), role-based access control (RBAC), session management, password reset flows, and brute-force protection mechanisms.',
-    skills: ['SSO Testing', 'MFA Flows', 'RBAC Validation', 'Session Testing', 'Security Testing']
+    desc: 'Test complete authentication modules: SSO, MFA, RBAC, session management, password reset flows, account lockout policies, and brute-force protection. Ensure only the right users access the right data.',
+    learn: ['Test SSO login and redirect flows', 'Validate OTP-based MFA authentication', 'Role-based access: Admin vs User vs Viewer', 'Session timeout and token expiry testing', 'Password reset and account recovery flows', 'Account lockout after failed attempts'],
+    skills: ['Selenium', 'Postman', 'SSO Testing', 'Security Testing', 'OWASP Guidelines', 'RestAssured']
   },
   logistics: {
     icon: '🚛', title: 'Logistics Management System', category: 'Supply Chain / ERP',
-    desc: 'Test end-to-end logistics workflows: shipment tracking, warehouse management, route optimization, delivery scheduling, invoicing, and third-party carrier integrations. Validate real-time data sync between warehouses, drivers, and customers.',
-    skills: ['Shipment Tracking', 'API Integration', 'Real-Time Data', 'DB Validation', 'Regression Testing']
+    desc: 'Test end-to-end logistics workflows: shipment creation and tracking, warehouse management, route optimization, delivery scheduling, invoicing, carrier API integrations, and real-time GPS tracking. Validate data sync between warehouses, drivers, and customer portals.',
+    learn: ['Test shipment creation and tracking flows', 'Validate warehouse inventory management', 'API testing for carrier integrations (FedEx, DHL)', 'Test route optimization algorithm outputs', 'Delivery status and notification testing', 'Invoice generation and billing validation'],
+    skills: ['Selenium', 'Postman', 'SQL', 'RestAssured', 'API Automation', 'Regression Testing']
   },
   fitness: {
     icon: '🏋️', title: 'Fitness & Wellness Application', category: 'Health Tech / Consumer App',
-    desc: 'Test workout plan builders, calorie trackers, progress dashboards, wearable device sync (Fitbit, Apple Watch), subscription billing, live class streaming, push notification reminders, and social sharing features.',
-    skills: ['Wearable API Testing', 'Subscription Flows', 'Streaming QA', 'Push Notifications', 'Performance Testing']
+    desc: 'Test a fitness app covering workout builders, calorie trackers, progress dashboards, wearable sync (Fitbit, Apple Watch, Google Fit), subscription billing, live class streaming, push notifications, and social sharing features.',
+    learn: ['Test workout creation and tracking modules', 'Validate calorie and nutrition calculations', 'Wearable device data sync accuracy testing', 'Subscription and payment flow testing', 'Live streaming quality and fallback testing', 'Push notification delivery and scheduling'],
+    skills: ['Appium', 'Selenium', 'Postman', 'Wearable API Testing', 'Subscription QA', 'Performance Testing']
   },
   messaging: {
     icon: '💬', title: 'Real-Time Messaging Platform', category: 'Communication / Real-Time',
-    desc: 'Test one-to-one and group chat features, WebSocket real-time message delivery, media uploads (images/videos/files), message read receipts, typing indicators, notifications, end-to-end encryption, and user blocking / reporting.',
-    skills: ['WebSocket Testing', 'Real-Time Validation', 'File Upload QA', 'Encryption Testing', 'Load Testing']
+    desc: 'Test a chat platform with WebSocket real-time messaging, group chats, media uploads (images, video, files), read receipts, typing indicators, end-to-end encryption, user blocking/reporting, and message search functionality.',
+    learn: ['Test real-time messages via WebSockets', 'Validate message delivery and read receipts', 'Test media uploads: images, video, documents', 'End-to-end encryption validation', 'Group chat creation and admin controls', 'Load testing: concurrent users & message volume'],
+    skills: ['WebSocket Testing', 'Postman', 'JMeter (Load Testing)', 'Selenium', 'Encryption QA', 'RestAssured']
   },
   game: {
     icon: '🎮', title: 'Game Testing (Web & Mobile)', category: 'Gaming / QA',
-    desc: 'Test gameplay mechanics, level progression, in-app purchases (IAP), multiplayer synchronization, leaderboard accuracy, game physics boundary testing, performance under load, and cross-platform compatibility on PC, mobile, and console.',
-    skills: ['Gameplay Testing', 'IAP Testing', 'Multiplayer Sync', 'Load & Stress Testing', 'Cross-Platform QA']
+    desc: 'Test web and mobile games covering gameplay mechanics, level progression, in-app purchases (IAP), multiplayer sync, leaderboard accuracy, physics boundary testing, performance under load, and cross-platform compatibility.',
+    learn: ['Test game level progression & unlock logic', 'Validate in-app purchases (coins, gems, skins)', 'Multiplayer sync and latency testing', 'Leaderboard accuracy and ranking validation', 'Cross-platform compatibility: PC, Android, iOS', 'Performance and FPS testing under load'],
+    skills: ['Appium', 'Selenium', 'Gameplay Testing', 'IAP Testing', 'JMeter', 'Cross-Platform QA']
   },
   n8n: {
     icon: '⚡', title: 'n8n Workflow Automation Testing', category: 'No-Code / AI Automation',
-    desc: 'Test n8n automation workflows: validate trigger conditions, node execution order, data transformation accuracy, API integrations (Slack, Gmail, Webhook), error handling and retry logic, and end-to-end automated pipeline testing using API calls.',
-    skills: ['n8n Workflow QA', 'API Trigger Testing', 'Data Transformation', 'Error Handling', 'Integration Testing']
+    desc: 'Test n8n business automation workflows. Validate trigger conditions, node execution order, data transformation, API integrations (Slack, Gmail, Webhooks), error handling and retry logic, and complete end-to-end pipeline regression testing.',
+    learn: ['Test workflow trigger conditions (Webhook, CRON)', 'Validate node execution sequence and data flow', 'Test integrations: Slack, Gmail, HTTP nodes', 'Error handling and retry mechanism validation', 'Data transformation and mapping accuracy', 'End-to-end pipeline regression via API'],
+    skills: ['n8n Platform', 'API Testing', 'Postman', 'Webhook Testing', 'Integration QA', 'RestAssured']
   },
   ehs: {
     icon: '🏗️', title: 'Environment, Health & Safety (EHS)', category: 'EHS / Industrial Compliance',
-    desc: 'Test an EHS compliance management platform: incident reporting forms, risk assessment modules, regulatory compliance dashboards, audit trail logging, OSHA/ISO reporting exports, employee safety training tracking, and notification escalation flows.',
-    skills: ['Compliance Testing', 'Form Validation', 'Audit Trail QA', 'Report Generation', 'Regulatory Testing']
+    desc: 'Test an EHS compliance system including incident reporting, risk assessment, compliance dashboards, audit trail logging, OSHA/ISO report exports, employee safety training tracking, and automated notification escalation.',
+    learn: ['Test incident report submission & approval', 'Validate risk assessment scoring and matrix', 'Audit trail and activity log verification', 'OSHA/ISO report generation and export testing', 'Employee training completion tracking', 'Notification escalation and alert testing'],
+    skills: ['Selenium', 'Postman', 'SQL Validation', 'Compliance Testing', 'PDF/Export Testing', 'Regression Testing']
   }
 };
 
@@ -503,12 +515,22 @@ const modalCloseBtn = document.getElementById('modal-close-btn');
 function openProjectModal(projectKey) {
   const data = PROJECT_DATA[projectKey];
   if (!data || !projectModal) return;
+
   document.getElementById('modal-icon').textContent = data.icon;
   document.getElementById('modal-title').textContent = data.title;
   document.getElementById('modal-category').textContent = data.category;
   document.getElementById('modal-desc').textContent = data.desc;
+
+  const learnEl = document.getElementById('modal-learn');
+  if (learnEl && data.learn) {
+    learnEl.innerHTML = data.learn.map(item => `<li>${item}</li>`).join('');
+  }
+
   const skillsEl = document.getElementById('modal-skills');
-  skillsEl.innerHTML = data.skills.map(s => `<span>${s}</span>`).join('');
+  if (skillsEl && data.skills) {
+    skillsEl.innerHTML = data.skills.map(s => `<span>${s}</span>`).join('');
+  }
+
   projectModal.hidden = false;
   document.body.style.overflow = 'hidden';
   if (modalCloseBtn) modalCloseBtn.focus();
@@ -533,3 +555,4 @@ if (projectModal) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && projectModal && !projectModal.hidden) closeProjectModal();
 });
+
