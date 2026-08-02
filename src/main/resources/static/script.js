@@ -2,42 +2,65 @@
    QASpark Institute – script.js
    =========================== */
 
-// ---- Navbar Scroll ----
+// ---- Navbar Scroll & Load Highlights ----
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-  document.getElementById('scroll-top-btn').classList.toggle('visible', window.scrollY > 400);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
   updateActiveNav();
 }, { passive: true });
+
+window.addEventListener('DOMContentLoaded', updateActiveNav);
+window.addEventListener('hashchange', updateActiveNav);
 
 // ---- Hamburger ----
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navLinks = document.getElementById('nav-links');
-hamburgerBtn.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-});
-document.addEventListener('click', (e) => {
-  if (!navbar.contains(e.target)) navLinks.classList.remove('open');
-});
-navLinks.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+if (hamburgerBtn && navLinks) {
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.addEventListener('click', (e) => {
+    if (navbar && !navbar.contains(e.target)) navLinks.classList.remove('open');
+  });
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
 
-// ---- Active Nav on Scroll (home page only) ----
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-const isHomePage = currentPage === 'index.html' || currentPage === '';
-const sections = document.querySelectorAll('section[id]');
+// ---- Active Nav Highlights ----
+const path = window.location.pathname;
+const isHomePage = path === '/' || path.endsWith('/index.html') || path.endsWith('/index') || path === '';
+const isCoursesPage = path.endsWith('/courses.html') || path.endsWith('/courses');
 
 function updateActiveNav() {
-  if (!isHomePage) return; // Let static HTML class handle it on inner pages
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-  });
+  if (isHomePage) {
+    const homeLink = document.getElementById('nav-home');
+    if (homeLink) {
+      if (window.scrollY < 200) {
+        homeLink.classList.add('active');
+      } else {
+        homeLink.classList.remove('active');
+      }
+    }
+  } else if (isCoursesPage) {
+    const curriculumSec = document.getElementById('curriculum');
+    const navCourses = document.getElementById('nav-courses');
+    const navCurriculum = document.getElementById('nav-curriculum');
+    
+    if (curriculumSec && navCourses && navCurriculum) {
+      const curriculumTop = curriculumSec.offsetTop - 160;
+      if (window.scrollY >= curriculumTop) {
+        navCurriculum.classList.add('active');
+        navCourses.classList.remove('active');
+      } else {
+        navCourses.classList.add('active');
+        navCurriculum.classList.remove('active');
+      }
+    }
+  }
 }
 
 // ---- Scroll Reveal ----
@@ -186,7 +209,7 @@ if (contactForm) {
     // Gather form data
     const name    = document.getElementById('name-input').value.trim();
     const email   = document.getElementById('email-input').value.trim();
-    const phone   = document.getElementById('phone-input').value.trim();
+    const phone   = document.getElementById('phone-input').value.replace(/\s+/g, '');
     const course  = document.getElementById('course-select');
     const courseText = course.options[course.selectedIndex].text || 'Not specified';
     const message = document.getElementById('message-input').value.trim();
@@ -219,6 +242,21 @@ if (contactForm) {
         submitBtn.textContent = '🚀 Send Inquiry';
         submitBtn.disabled = false;
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      } else {
+        const data = await response.json();
+        const msg = data.message || 'Validation failed.';
+        if (msg.includes('email') || msg.includes('Email')) {
+          showFieldError(emailInput, msg);
+        } else if (msg.includes('phone') || msg.includes('mobile') || msg.includes('digit')) {
+          showFieldError(phoneInput, msg);
+        } else if (msg.includes('name') || msg.includes('Name')) {
+          showFieldError(document.getElementById('name-input'), msg);
+        } else {
+          alert('Error: ' + msg);
+        }
+        submitBtn.textContent = '🚀 Send Inquiry';
+        submitBtn.disabled = false;
         return;
       }
     } catch (err) {
@@ -312,7 +350,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       e.preventDefault();
       const offset = 80;
-      window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: targetPosition - offset, behavior: 'smooth' });
     }
   });
 });
@@ -330,34 +369,59 @@ if (heroVisual && window.matchMedia('(prefers-reduced-motion: no-preference)').m
   }, { passive: true });
 }
 
-// ---- Review Modal Open / Close ----
+// ---- Native Review Modal (Dialog) System ----
 const reviewModal = document.getElementById('review-modal');
 const openReviewBtn = document.getElementById('open-review-modal-btn');
 const closeReviewBtn = document.getElementById('review-modal-close');
 
 function openReviewModal() {
   if (!reviewModal) return;
-  reviewModal.hidden = false;
+  reviewModal.showModal();
   document.body.style.overflow = 'hidden';
-  if (closeReviewBtn) closeReviewBtn.focus();
+  updateLivePreview(); // Initialize preview
 }
 
 function closeReviewModal() {
   if (!reviewModal) return;
-  reviewModal.hidden = true;
+  reviewModal.close();
   document.body.style.overflow = '';
+  // Reset form errors and validations
+  const form = document.getElementById('review-form');
+  if (form) {
+    form.reset();
+    resetFormErrors();
+  }
 }
 
 if (openReviewBtn) openReviewBtn.addEventListener('click', openReviewModal);
 if (closeReviewBtn) closeReviewBtn.addEventListener('click', closeReviewModal);
+
+// Close on backdrop click (Light-dismiss fallback/standard handling)
 if (reviewModal) {
   reviewModal.addEventListener('click', (e) => {
-    if (e.target === reviewModal) closeReviewModal();
+    // If clicking target is the dialog itself (the backdrop), close it
+    if (e.target === reviewModal) {
+      closeReviewModal();
+      return;
+    }
+    // Bounding rect check for Safari/other browsers backdrop clicks
+    const rect = reviewModal.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog) {
+      closeReviewModal();
+    }
+  });
+
+  // Handle ESC key standard scroll restore
+  reviewModal.addEventListener('close', () => {
+    document.body.style.overflow = '';
   });
 }
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && reviewModal && !reviewModal.hidden) closeReviewModal();
-});
 
 // ---- User Review & Rating Submission System ----
 const reviewForm = document.getElementById('review-form');
@@ -365,19 +429,40 @@ const reviewsGrid = document.getElementById('reviews-grid');
 const starRatingInput = document.getElementById('star-rating-input');
 let selectedRating = 5;
 
+// Hover & Click logic for Star Ratings
 if (starRatingInput) {
   const stars = starRatingInput.querySelectorAll('.star-icon');
+  
   stars.forEach(star => {
+    // Click to select
     star.addEventListener('click', () => {
       selectedRating = parseInt(star.getAttribute('data-value'), 10);
-      stars.forEach(s => {
-        const val = parseInt(s.getAttribute('data-value'), 10);
-        s.classList.toggle('active', val <= selectedRating);
-      });
-      const label = document.getElementById('selected-rating-val');
-      if (label) label.textContent = selectedRating;
+      updateStars(selectedRating);
+      updateLivePreview();
+    });
+
+    // Hover effect
+    star.addEventListener('mouseenter', () => {
+      const hoverVal = parseInt(star.getAttribute('data-value'), 10);
+      updateStars(hoverVal);
     });
   });
+
+  // Reset to selected rating when mouse leaves the star group
+  starRatingInput.addEventListener('mouseleave', () => {
+    updateStars(selectedRating);
+  });
+}
+
+function updateStars(rating) {
+  if (!starRatingInput) return;
+  const stars = starRatingInput.querySelectorAll('.star-icon');
+  stars.forEach(s => {
+    const val = parseInt(s.getAttribute('data-value'), 10);
+    s.classList.toggle('active', val <= rating);
+  });
+  const label = document.getElementById('selected-rating-val');
+  if (label) label.textContent = rating;
 }
 
 function escapeHTML(str) {
@@ -393,38 +478,159 @@ function createReviewCardHTML(name, role, rating, text) {
       <div class="testimonial-stars" aria-label="${rating} out of 5 stars">${starsHTML}</div>
       <blockquote><p>"${escapeHTML(text)}"</p></blockquote>
       <div class="testimonial-author">
-        <div class="author-avatar">${escapeHTML(name.charAt(0).toUpperCase())}</div>
+        <div class="author-avatar">${escapeHTML(name ? name.charAt(0).toUpperCase() : '?')}</div>
         <div class="author-info">
-          <strong>${escapeHTML(name)}</strong>
+          <strong>${escapeHTML(name || 'Your Name')}</strong>
           <span>${escapeHTML(role || 'Verified Student')}</span>
         </div>
       </div>
     </article>`;
 }
 
-function loadSavedReviews() {
-  if (!reviewsGrid) return;
-  const saved = JSON.parse(localStorage.getItem('qaspark_reviews') || '[]');
-  saved.reverse().forEach(rev => {
-    const cardHTML = createReviewCardHTML(rev.name, rev.role, rev.rating, rev.reviewText);
-    reviewsGrid.insertAdjacentHTML('afterbegin', cardHTML);
+// Live Review Preview Card Rendering
+const reviewerNameInput = document.getElementById('reviewer-name');
+const reviewerRoleInput = document.getElementById('reviewer-role');
+const reviewerTextInput = document.getElementById('reviewer-text');
+const livePreviewContainer = document.getElementById('live-preview-card-container');
+const charCounterDisplay = document.getElementById('char-counter-display');
+
+function updateLivePreview() {
+  if (!livePreviewContainer) return;
+  const name = reviewerNameInput ? reviewerNameInput.value.trim() : '';
+  const role = reviewerRoleInput ? reviewerRoleInput.value.trim() : '';
+  const text = reviewerTextInput ? reviewerTextInput.value.trim() : '';
+  
+  const previewHTML = createReviewCardHTML(
+    name || 'Your Name',
+    role || 'Course Taken / Job Title',
+    selectedRating,
+    text || 'Share your experience about live classes, notes, mock interviews...'
+  );
+  livePreviewContainer.innerHTML = previewHTML;
+}
+
+// Textarea Character Counter & Form Fields event listeners
+if (reviewerTextInput) {
+  reviewerTextInput.addEventListener('input', () => {
+    const len = reviewerTextInput.value.length;
+    if (charCounterDisplay) {
+      charCounterDisplay.textContent = `${len} / 500 characters`;
+      charCounterDisplay.style.color = len > 450 ? '#f87171' : 'var(--muted)';
+    }
+    validateReviewField(reviewerTextInput, 'text-error-msg', 'Please enter your review text (minimum 10 characters).', 10);
+    updateLivePreview();
   });
 }
 
-loadSavedReviews();
+if (reviewerNameInput) {
+  reviewerNameInput.addEventListener('input', () => {
+    validateReviewField(reviewerNameInput, 'name-error-msg', 'Your name must be at least 2 characters long.', 2);
+    updateLivePreview();
+  });
+}
+
+if (reviewerRoleInput) {
+  reviewerRoleInput.addEventListener('input', updateLivePreview);
+}
+
+// Inline Form Field Validation (Review Form)
+function validateReviewField(inputElement, errorElementId, errorMsg, minLength = 1) {
+  const errorSpan = document.getElementById(errorElementId);
+  const val = inputElement.value.trim();
+  if (val.length < minLength) {
+    inputElement.classList.add('invalid');
+    if (errorSpan) {
+      errorSpan.textContent = errorMsg;
+      errorSpan.hidden = false;
+    }
+    return false;
+  } else {
+    inputElement.classList.remove('invalid');
+    if (errorSpan) {
+      errorSpan.hidden = true;
+    }
+    return true;
+  }
+}
+
+function resetFormErrors() {
+  if (reviewerNameInput) reviewerNameInput.classList.remove('invalid');
+  if (reviewerTextInput) reviewerTextInput.classList.remove('invalid');
+  const errNames = ['name-error-msg', 'text-error-msg'];
+  errNames.forEach(id => {
+    const span = document.getElementById(id);
+    if (span) span.hidden = true;
+  });
+  if (charCounterDisplay) charCounterDisplay.textContent = '0 / 500 characters';
+  selectedRating = 5;
+  updateStars(5);
+}
+
+// Fetch reviews from Backend API on Load with local storage fallback
+async function loadRecentReviews() {
+  if (!reviewsGrid) return;
+  
+  let loadedFromBackend = false;
+  let reviewsToRender = [];
+
+  try {
+    const res = await fetch('/api/reviews');
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.length > 0) {
+        reviewsToRender = data;
+        loadedFromBackend = true;
+      }
+    }
+  } catch (err) {
+    console.warn('Backend API reviews endpoint offline, falling back to LocalStorage.', err);
+  }
+
+  const savedLocal = JSON.parse(localStorage.getItem('qaspark_reviews') || '[]');
+
+  if (loadedFromBackend) {
+    savedLocal.forEach(localRev => {
+      const exists = reviewsToRender.some(bRev => bRev.name === localRev.name && bRev.reviewText === localRev.reviewText);
+      if (!exists) {
+        reviewsToRender.unshift(localRev);
+      }
+    });
+  } else {
+    reviewsToRender = [
+      { name: "Priya Sharma", role: "QA Engineer @ TechCorp", rating: 5, reviewText: "Puja Ma'am and Raj Sir are incredible mentors! The 2-day free demo class convinced me immediately. Placed as QA Engineer!" },
+      { name: "Rahul Verma", role: "SDET @ Infosys", rating: 5, reviewText: "The database testing and Java automation live classes were crystal clear. The weekly mock interviews helped me remove all fear of interviews. Placed at Infosys!" },
+      { name: "Anjali Patel", role: "QA Analyst @ Wipro", rating: 5, reviewText: "Personalized 1-on-1 guidance is QASpark's biggest strength. They review your resume, conduct weekly mock interviews, and refer you to companies. Highly recommended!" }
+    ];
+    
+    savedLocal.reverse().forEach(localRev => {
+      reviewsToRender.unshift(localRev);
+    });
+  }
+
+  reviewsGrid.innerHTML = '';
+  reviewsToRender.forEach(rev => {
+    const cardHTML = createReviewCardHTML(rev.name, rev.role, rev.rating, rev.reviewText);
+    reviewsGrid.insertAdjacentHTML('beforeend', cardHTML);
+  });
+}
+
+loadRecentReviews();
 
 if (reviewForm) {
   reviewForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('reviewer-name').value.trim();
-    const role = document.getElementById('reviewer-role').value.trim();
-    const reviewText = document.getElementById('reviewer-text').value.trim();
-    const btn = document.getElementById('review-submit-btn');
-
-    if (!name || !reviewText) {
-      alert('Please enter your name and review message.');
+    
+    const isNameValid = validateReviewField(reviewerNameInput, 'name-error-msg', 'Your name must be at least 2 characters long.', 2);
+    const isTextValid = validateReviewField(reviewerTextInput, 'text-error-msg', 'Please enter your review text (minimum 10 characters).', 10);
+    
+    if (!isNameValid || !isTextValid) {
       return;
     }
+
+    const name = reviewerNameInput.value.trim();
+    const role = reviewerRoleInput.value.trim();
+    const reviewText = reviewerTextInput.value.trim();
+    const btn = document.getElementById('review-submit-btn');
 
     btn.textContent = '⏳ Publishing Review...';
     btn.disabled = true;
@@ -438,7 +644,7 @@ if (reviewForm) {
         body: JSON.stringify(newReview)
       });
     } catch (err) {
-      console.log('Java API offline, saving locally:', err);
+      console.log('Java API offline, saved to LocalStorage only:', err);
     }
 
     const saved = JSON.parse(localStorage.getItem('qaspark_reviews') || '[]');
@@ -450,19 +656,16 @@ if (reviewForm) {
       reviewsGrid.insertAdjacentHTML('afterbegin', cardHTML);
     }
 
-    const successMsg = document.getElementById('review-success-msg');
-    if (successMsg) {
-      successMsg.hidden = false;
-      // Auto-close modal after 2.5s on success
+    const successOverlay = document.getElementById('review-success-overlay');
+    if (successOverlay) {
+      successOverlay.hidden = false;
       setTimeout(() => {
         closeReviewModal();
-        successMsg.hidden = true;
-      }, 2500);
+        successOverlay.hidden = true;
+      }, 3000);
+    } else {
+      closeReviewModal();
     }
-
-    reviewForm.reset();
-    btn.textContent = '🌟 Submit Review';
-    btn.disabled = false;
   });
 }
 

@@ -18,12 +18,13 @@
       </a>
       <ul class="nav-links" role="list" id="nav-links">
         <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
-        <li><a href="courses.html" class="nav-link" id="nav-courses">Courses</a></li>
+        <li><a href="courses.html#courses-list" class="nav-link" id="nav-courses">Courses</a></li>
         <li><a href="courses.html#curriculum" class="nav-link" id="nav-curriculum">Curriculum</a></li>
         <li><a href="pricing.html" class="nav-link" id="nav-pricing">Pricing</a></li>
         <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        <li class="nav-mobile-enroll"><a href="/contact.html#contact-form" class="btn btn-primary" style="display:block; text-align:center; margin-top:8px;">Enroll Now</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-primary nav-cta" id="nav-enroll-btn">Enroll Now</a>
+      <a href="/contact.html#contact-form" class="btn btn-primary nav-cta" id="nav-enroll-btn">Enroll Now</a>
       <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
@@ -51,7 +52,7 @@
           <span class="tag">&#127919; Weekly Mock Interviews</span>
         </div>
         <div class="hero-actions">
-          <a href="courses.html" class="btn btn-primary btn-lg" id="hero-explore-btn">Explore Courses</a>
+          <a href="courses.html#courses-list" class="btn btn-primary btn-lg" id="hero-explore-btn">Explore Courses</a>
           <a href="tel:8910438179" class="btn btn-outline btn-lg" id="hero-call-btn">&#128222; Call Us Now</a>
         </div>
         <div class="hero-stats">
@@ -75,34 +76,6 @@
       <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0f172a"/>
       </svg>
-    </div>
-  </section>
-
-  <!-- HIGH TRUST HIGHLIGHTS BAR -->
-  <section class="trust-highlights-bar" aria-label="Key Course Benefits">
-    <div class="container">
-      <div class="trust-grid-bar">
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">&#127873;</div>
-          <div class="trust-bar-text"><strong>2 Days Free Demo Class</strong><span>Try 2 live classes free before enrolling</span></div>
-        </div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">&#128179;</div>
-          <div class="trust-bar-text"><strong>2 EMI Fee Options</strong><span>Easy 2-installment payment option available</span></div>
-        </div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">&#128421;&#65039;</div>
-          <div class="trust-bar-text"><strong>100% Online Live Classes</strong><span>Interactive live training with real-time Q&amp;A</span></div>
-        </div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">&#127891;</div>
-          <div class="trust-bar-text"><strong>Verified Certificate &amp; Notes</strong><span>Official completion certificate &amp; PDF notes</span></div>
-        </div>
-        <div class="trust-bar-item">
-          <div class="trust-bar-icon">&#127919;</div>
-          <div class="trust-bar-text"><strong>Weekly Mock Interviews</strong><span>1-on-1 interview practice to get job ready</span></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -190,7 +163,7 @@
         </article>
       </div>
       <div class="text-center reveal" style="margin-top:36px;">
-        <a href="courses.html" class="btn btn-primary btn-lg">View All Courses &amp; Curriculum &#8594;</a>
+        <a href="courses.html#courses-list" class="btn btn-primary btn-lg">View All Courses &amp; Curriculum &amp;#8594;</a>
       </div>
     </div>
   </section>
@@ -331,9 +304,17 @@
 
   <!-- REVIEWS & RATINGS SECTION -->
   <!-- REVIEW MODAL OVERLAY -->
-  <div id="review-modal" class="review-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="review-modal-title" hidden>
+  <dialog id="review-modal" class="review-modal-overlay" aria-labelledby="review-modal-title">
     <div class="review-modal-box">
       <button class="review-modal-close" id="review-modal-close" aria-label="Close review form">&times;</button>
+      
+      <!-- Animated success screen -->
+      <div class="form-success-overlay" id="review-success-overlay" hidden>
+        <div class="success-icon-circle">&#10003;</div>
+        <h3 class="success-title">Review Published!</h3>
+        <p class="success-desc">Thank you so much for sharing your feedback. Your experience has been posted and is now live on our website.</p>
+      </div>
+
       <div class="review-modal-header">
         <div class="review-modal-icon">&#9733;</div>
         <h3 id="review-modal-title">Write a Review &amp; Share Your Experience</h3>
@@ -344,6 +325,7 @@
           <div class="form-group">
             <label for="reviewer-name">Your Full Name *</label>
             <input type="text" id="reviewer-name" placeholder="e.g. Suman Roy" required />
+            <span class="form-error-msg" id="name-error-msg" hidden></span>
           </div>
           <div class="form-group">
             <label for="reviewer-role">Course Taken / Job Title (Optional)</label>
@@ -366,17 +348,24 @@
         <div class="form-group">
           <label for="reviewer-text">Your Review &amp; Feedback *</label>
           <textarea id="reviewer-text" rows="4" placeholder="Share your experience about live classes, notes, mock interviews, mentors, job support..." required></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+            <span class="form-error-msg" id="text-error-msg" hidden></span>
+            <div class="char-counter" id="char-counter-display">0 / 500 characters</div>
+          </div>
+        </div>
+
+        <!-- Live Review Card Preview -->
+        <div class="live-preview-section">
+          <h4>Live Card Preview</h4>
+          <div class="live-preview-card-container" id="live-preview-card-container">
+            <!-- Populated dynamically via JS -->
+          </div>
         </div>
 
         <button type="submit" class="btn btn-orange btn-lg review-submit-full" id="review-submit-btn">&#9733; Submit My Review</button>
-
-        <div class="form-success" id="review-success-msg" hidden>
-          <div class="success-icon">&#10003;</div>
-          <strong>Thank you! Your review has been published and is now live on the website.</strong>
-        </div>
       </form>
     </div>
-  </div>
+  </dialog>
 
   <!-- REVIEWS & RATINGS SECTION -->
   <section class="testimonials-section" id="reviews" aria-labelledby="testi-h">
@@ -487,7 +476,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 QASpark. All rights reserved. | <em>Taught by Industry Experts: Puja Paul (7+ Yrs) &amp; Raj Kumar (5+ Yrs)</em></p>
+        <p>&copy; 2026 QASpark. All rights reserved. | <em>Taught by Industry Experts: Puja Paul (7+ Yrs) &amp; Raj Kumar (5+ Yrs)</em></p>
         <p class="footer-tagline">Learn Today. Test Tomorrow. Lead the Future! &#9889;</p>
       </div>
     </div>

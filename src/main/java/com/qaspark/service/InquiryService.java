@@ -17,6 +17,10 @@ public class InquiryService {
     public InquiryRequest saveInquiry(InquiryRequest request) {
         String id = "QAS-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
         request.setId(id);
+        // Sanitize: strip spaces from phone (defense-in-depth)
+        if (request.getPhone() != null) {
+            request.setPhone(request.getPhone().replaceAll("\\s+", ""));
+        }
         inquiryList.add(request);
         System.out.println("📩 [JAVA BACKEND] New Inquiry Received: " + id + " from " + request.getName() + " (" + request.getEmail() + ")");
         return request;
