@@ -3,6 +3,7 @@ package com.qaspark.controller;
 import com.qaspark.model.ReviewRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,4 +39,18 @@ public class ReviewApiController {
             "review", request
         ));
     }
+
+    /**
+     * BUG FIX: Return a consistent {success, message} error body when @Valid fails.
+     * Previously Spring returned its own default error format with no 'success' field.
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidationError(MethodArgumentNotValidException ex) {
+        String errorMsg = ex.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+        return ResponseEntity.badRequest().body(Map.of(
+            "success", false,
+            "message", errorMsg
+        ));
+    }
 }
+
