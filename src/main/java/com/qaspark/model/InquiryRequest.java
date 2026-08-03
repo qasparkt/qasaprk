@@ -18,7 +18,7 @@ public class InquiryRequest {
     private String email;
 
     @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^[6-9]\\d{9}$|^[6-9]\\d{4}\\s\\d{5}$|^[6-9]\\d{4}\\s\\d{4}\\d$", message = "Please enter a valid 10-digit Indian mobile number")
+    @Pattern(regexp = "^[6-9]\\d{9}$|^[6-9]\\d{4}\\s\\d{5}$", message = "Please enter a valid 10-digit Indian mobile number")
     private String phone;
 
     private String course;
