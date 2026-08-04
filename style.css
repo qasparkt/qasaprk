@@ -388,7 +388,7 @@ input, select, textarea { font-family: inherit; }
 .hero-card-stack {
   position: relative;
   width: 380px;
-  height: 380px;
+  height: 460px;
 }
 .floating-card {
   position: absolute;
@@ -408,10 +408,13 @@ input, select, textarea { font-family: inherit; }
 .card-info strong { font-family: var(--font-display); font-size: 0.9rem; color: var(--white); }
 .card-info span { font-size: 0.75rem; color: var(--muted); }
 
-.card-manual { top: 20px; left: 0; animation-delay: 0s; }
-.card-automation { top: 100px; right: 0; animation-delay: 1s; }
-.card-db { bottom: 90px; left: 20px; animation-delay: 2s; }
-.card-ai { bottom: 20px; right: 20px; animation-delay: 0.5s; }
+/* 5-card zigzag: left → right → left → right → left */
+.card-manual    { top: 20px;  left: 0;    animation-delay: 0s; }
+.card-automation{ top: 100px; right: 0;   animation-delay: 1s; }
+.card-db        { top: 190px; left: 20px; animation-delay: 2s; }
+.card-ai        { top: 275px; right: 20px; animation-delay: 0.5s; }
+.card-n8n       { top: 365px; left: 20px; animation-delay: 1.5s; border-color: rgba(234,88,12,0.35); box-shadow: 0 8px 24px rgba(234,88,12,0.15); }
+
 
 @keyframes floatCard {
   0%, 100% { transform: translateY(0); }
@@ -1316,12 +1319,37 @@ a.contact-item:hover { border-color: rgba(245,130,31,0.4); background: rgba(245,
 .widget-btn-call {
   background: linear-gradient(135deg, #f5821f, #d96f12);
 }
+.widget-btn-linkedin {
+  background: linear-gradient(135deg, #0077b5, #005983);
+}
+.widget-btn-linkedin .widget-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
 .widget-btn:hover {
   transform: translateY(-4px) scale(1.06);
   box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(37, 211, 102, 0.5);
   color: #fff;
 }
+.widget-btn-linkedin:hover {
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 119, 181, 0.55);
+}
 .widget-icon { font-size: 1.2rem; }
+
+/* Footer LinkedIn link */
+.footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0a95d4 !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: color var(--transition), opacity var(--transition);
+}
+.footer-linkedin:hover {
+  color: #38bdf8 !important;
+  opacity: 0.9;
+}
 
 /* Course Filter & Search Bar */
 .course-filter-bar {
